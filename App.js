@@ -44,24 +44,29 @@ const App: () => Node = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text>This is maps with React Native Maps</Text>
-      <Text>If following doesn't work, please replace the API key in </Text>
-      <Text>Android Manifest.xml</Text>
-      <Pressable
-        onPress={() => {
-          Linking.openURL('https://awereactnative.com/react-native-maps/');
-        }}>
-        <Text>Follow https://awereactnative.com/react-native-maps/</Text>
-      </Pressable>
-      <MapView
-        style={styles.map}
-        initialRegion={tokyoRegion} //your region data goes here.
-      >
-        {/*Make sure the Marker component is a child of MapView. Otherwise it won't render*/}
-        <Marker coordinate={tokyoRegion} />
-      </MapView>
-    </View>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        <Text>This is maps with React Native Maps</Text>
+        <Text>If following doesn't work, please replace the API key in </Text>
+        <Text>Android Manifest.xml</Text>
+        <Pressable
+          onPress={() => {
+            Linking.openURL('https://awereactnative.com/react-native-maps/');
+          }}>
+          <Text style={{color: 'white', backgroundColor: 'black'}}>
+            Follow https://awereactnative.com/react-native-maps/
+          </Text>
+        </Pressable>
+        <MapView
+          style={styles.map}
+          initialRegion={tokyoRegion} //your region data goes here.
+        >
+          {/*Make sure the Marker component is a child of MapView. Otherwise it won't render*/}
+          <Marker coordinate={tokyoRegion} />
+        </MapView>
+        <Text>Made with love by humans</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -83,14 +88,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   container: {
-    ...StyleSheet.absoluteFillObject,
     flex: 1, //the container will fill the whole screen.
-    justifyContent: 'flex-start',
-    alignItems: 'center',
   },
   map: {
-    width: 200,
-    height: 200,
+    height: '60%',
+    width: '100%',
   },
 });
 
